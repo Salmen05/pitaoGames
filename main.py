@@ -18,7 +18,6 @@ pygame.init()
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 pygame.display.set_caption("Lomba Lomba RUSH")
 clock = pygame.time.Clock()
-
 pygame.mixer.music.load("music/background_music.mp3")
 # Classe para botões
 class Button:
@@ -46,7 +45,6 @@ class Button:
     def is_clicked(self, pos):
         return self.rect.collidepoint(pos)
 
-# Função para o menu de escolha
 # Função para o menu de escolha
 def menu():
     button_width = 200
@@ -123,7 +121,7 @@ def main():
     font = pygame.font.Font(None, 36)
 
     def generate_position():
-        return random.randint(0, SCREEN_WIDTH - CHEESE_SIZE), random.randint(0, SCREEN_HEIGHT - CHEESE_SIZE)
+        return random.randint(0, SCREEN_WIDTH - 300), random.randint(0, SCREEN_HEIGHT - CHEESE_SIZE)
 
     # gerando o rato e sua veloc
     rat_rect = pygame.Rect(300, 170, RAT_SIZE, RAT_SIZE)
@@ -191,7 +189,7 @@ def main():
         elif last_direction == "right":
             rat_rect.x += RAT_SPEED * clock.get_time() / 1000
 
-        rat_rect.x = max(0, min(rat_rect.x, SCREEN_WIDTH - RAT_SIZE))
+        rat_rect.x = max(0, min(rat_rect.x, SCREEN_WIDTH - 450))
         rat_rect.y = max(0, min(rat_rect.y, SCREEN_HEIGHT - RAT_SIZE))
 
         # guardar a direção do rato
