@@ -19,6 +19,7 @@ screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 pygame.display.set_caption("Lomba Lomba RUSH")
 clock = pygame.time.Clock()
 
+pygame.mixer.music.load("music/background_music.mp3")
 # Classe para botões
 class Button:
     def __init__(self, x, y, width, height, text, text_color, button_color, hover_color, action=None):
@@ -54,7 +55,7 @@ def menu():
 
     buttons = []
     # Adicionando botões para as opções
-    options = ["New Game", "Exit"]
+    options = ["Play", "Exit"]
     for i, option in enumerate(options):
         # Ajuste de posição y dos botões para a parte inferior da tela
         button_y = SCREEN_HEIGHT - 50 - len(options) * (button_height + 20) + i * (button_height + 20)
@@ -64,6 +65,7 @@ def menu():
     # Carregar e escalar a imagem de fundo
     background = pygame.transform.scale(pygame.image.load("img/background.png"), (SCREEN_WIDTH, SCREEN_HEIGHT))
 
+    pygame.mixer.music.play(-1)
     while True:
         # Desenhar background
         screen.blit(background, (0, 0))
@@ -87,7 +89,7 @@ def menu():
                         if button.action == "exit":
                             pygame.quit()
                             sys.exit()
-                        elif button.action == "new game":
+                        elif button.action == "play":
                             print("Iniciando novo jogo...")
                             return  # Retorna para iniciar o jogo principal
                         else:
@@ -97,6 +99,7 @@ def menu():
 
 # Função principal
 def main():
+
     global RAT_SIZE  # Definindo RAT_SIZE como uma variável global
 
     # Definindo RAT_SIZE e outras variáveis relacionadas ao tamanho do rato
